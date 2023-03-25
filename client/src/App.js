@@ -1,9 +1,8 @@
-import './App.css';
 import io from 'socket.io-client'
 import { useState } from 'react';
 import Chat from './Component/Chat';
-
-const socket = io.connect("http://localhost:4500")
+import "./chat.css"
+const socket = io.connect("https://authenti.onrender.com")
 
 
 function App() {
@@ -18,12 +17,14 @@ function App() {
     }
   }
   return (
-    <div className="App">
+    <div className='chat-container'>
       {!showChat ? <div>
         <h3>Please join chat</h3>
-        <input type="text" placeholder='Enter Name' onChange={(e) => setUsername(e.target.value)} />
-        <input type="text" placeholder='Room Id...' onChange={(e) => setRoom(e.target.value)} />
-        <button onClick={joinRoom}>Join a room</button>
+        <div className='user-input-container'>
+          <input className="input-user" type="text" placeholder='Enter Name' onChange={(e) => setUsername(e.target.value)} />
+          <input className="input-user" type="text" placeholder='Room Id...' onChange={(e) => setRoom(e.target.value)} />
+          <button className="submit-btn" onClick={joinRoom}>Join a room</button>
+        </div>
       </div> : <Chat socket={socket} username={userName} room={room} />
       }
     </div>
