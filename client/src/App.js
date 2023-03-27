@@ -17,6 +17,7 @@ function App() {
     }
   }
   return (
+    <div className='chat-main'>
     <div className='chat-container'>
       {!showChat ? <div>
         <h3>Please join chat</h3>
@@ -27,6 +28,7 @@ function App() {
         </div>
       </div> : <Chat socket={socket} username={userName} room={room} />
       }
+    </div>
     </div>
   );
 }
